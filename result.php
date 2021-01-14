@@ -10,7 +10,7 @@
 
     <?php   
     
-        echo $_POST["monkey"] . $_POST["giraffe"] . $_POST["tiger"] . $_POST["coconut"];
+        //echo $_POST["monkey"] . $_POST["giraffe"] . $_POST["tiger"] . $_POST["coconut"];
         
         abstract class Animal {
             public function onClickCode() {
@@ -27,9 +27,9 @@
             public $name;
             public $img;
 
-            /* public function echoImg() {
+            public function echoImg() {
                 echo "img style='max-width:25em;' src='".$this->imgUrl."' onclick='".$this->onClickCode()."'/><br>";
-            } */
+            } 
         }
   
 
