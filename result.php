@@ -14,12 +14,12 @@
         
         abstract class Animal {
             public function onClickCode() {
-                /* $text = 'alert("';
+                $text = 'alert("';
                 $text .= $this->name;
                 $text .= ": ";
                 $text .= $this->getSound();
                 $text .='");';
-                return $text; */
+                return $text;
             }
 
             abstract protected function getSound();
