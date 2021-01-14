@@ -76,11 +76,87 @@
                 return "En papaya coconut, på en plats i solen...";
             }
         }
-    
 
+        function addImgCount($imgCount) {
+            if($imgCount == 2) {
+                return 0;
+            } else {
+                return $imgCount + 1;
+            }
+        }
 
-            
-        
+        if(isset($_SERVER["REQUEST_METHOD"]) && $_SERVER["REQUEST_METHOD"] === "POST") {
+            if(isset($_POST["monkey"]) && isset($_POST["giraffe"]) && isset($_POST["tiger"]) && isset($_POST["coconut"])) {
+
+                $monkey = $_POST["monkey"];
+                $giraffe = $_POST["giraffe"];
+                $tiger = $_POST["tiger"];
+                $coconut = $_POST["coconut"];
+
+                $animalArray = array();
+                $imgCount = 0;
+
+                for ($i = 0; $i < $monkey; $i++) {
+                    $rawData = file_get_contents("https://randomuser.me/api/");
+
+                    $name = json_decode($rawData)->results[0]->name->first;
+                    $monkeyInstans = new Monkey($name, "./img/monkey.jfif" . $imgCount . ".jpg");
+
+                    $imgCount = addImgCount($imgCount);
+
+                    array_push($animalArray, $monkeyInstans);
+                }
+
+                $imgCount = 0;
+
+                for ($i = 0; $i < $giraffe; $i++) {
+                    $rawData = file_get_contents("https://randomuser.me/api/");
+
+                    $name = json_decode($rawData)->results[0]->name->first;
+                    $giraffeInstans = new Giraffe($name, "./img/giraffe.jfif" . $imgCount . ".jpg");
+
+                    $imgCount = addImgCount($imgCount);
+
+                    array_push($animalArray, $giraffeInstans);
+                }
+
+                $imgCount = 0;
+
+                for ($i = 0; $i < $tiger; $i++) {
+                    $rawData = file_get_contents("https://randomuser.me/api/");
+
+                    $name = json_decode($rawData)->results[0]->name->first;
+                    $tigerInstans = new Tiger($name, "./img/tiger.jfif" . $imgCount . ".jpg");
+
+                    $imgCount = addImgCount($imgCount);
+
+                    array_push($animalArray, $tigerInstans);
+                }
+
+                $imgCount = 0;
+
+                for ($i = 0; $i < $coconut; $i++) {
+                    $rawData = file_get_contents("https://randomuser.me/api/");
+
+                    $name = json_decode($rawData)->results[0]->name->first;
+                    $coconutInstans = new Cocunut($name, "./img/coconut.jfif" . $imgCount . ".jpg");
+
+                    $imgCount = addImgCount($imgCount);
+
+                    array_push($animalArray, $coconutInstans);
+                }
+
+                foreach ($collectedAnimalList as $animal) {
+                    $animal->echoImg();
+                    echo $animal->name . " " . $animal->getSound() . '<br><br>';
+                }
+
+            } else {
+                echo "POST NOT SET";
+            }
+        } else {
+            echo "REQUEST METHOD NOT SET!";
+        }
 
     ?>
     
