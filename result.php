@@ -1,44 +1,90 @@
-<?php 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-abstract class Animal {
+    <title>Animals</title>
+</head>
+<body>
 
-    abstract protected function getsound();
-
-}
-
-
-class Monkey extends Animal {
-    function __construct($img, $sound) {
-        //parent::__construct($img, $sound)
-    }
+    <?php   
     
-    $this->        
+        echo $_POST["monkey"] . $_POST["giraffe"] . $_POST["tiger"] . $_POST["coconut"];
+        
+        abstract class Animal {
+            public function onClickCode() {
+                /* $text = 'alert("';
+                $text .= $this->name;
+                $text .= ": ";
+                $text .= $this->getSound();
+                $text .='");';
+                return $text; */
+            }
 
-}
+            abstract protected function getSound();
 
-class Giraffe extends Animal {
-    function __construct($img, $sound) {
-        //parent::__construct($img, $sound)
-    }
+            public $name;
+            public $img;
+
+            /* public function echoImg() {
+                echo "img style='max-width:25em;' src='".$this->imgUrl."' onclick='".$this->onClickCode()."'/><br>";
+            } */
+        }
+  
+
+        class Monkey extends Animal {
+            function __construct($name, $img) {
+                //parent::__construct($name, $img, $sound); - Osäker varför denna inte ska vara med?
+                $this->name = $name;
+                $this->img = $img;            
+            }
+            function getSound() {
+                return "OAOAHAOAHA";
+            }
+        }
+
+        class Giraffe extends Animal {
+            function __construct($name, $img) {
+                //parent::__construct($name, $img, $sound);
+                $this->name = $name;
+                $this->img = $img;            
+            }
+            function getSound() {
+                return "RAAARAHA";
+            }
+        }
+
+        class Tiger extends Animal {
+            function __construct($name, $img) {
+                //parent::__construct($name, $img, $sound);
+                $this->name = $name;
+                $this->img = $img;            
+            }
+            function getSound() {
+                return "AHHHARRRRAAAAH";
+            }
+        }
+        
+        class Cocunut extends Animal {
+            function __construct($name, $img) {
+                //parent::__construct($name, $img, $sound);
+                $this->name = $name;
+                $this->img = $img;            
+            }
+            function getSound() {
+                return "En papaya coconut, på en plats i solen...";
+            }
+        }
     
-    $this->        
 
-}
 
-class Tiger extends Animal {
-    function __construct($img, $sound) {
-        //parent::__construct($img, $sound)
-    }
+            
+        
+
+    ?>
     
-    $this->        
-}
+</body>
+</html>
 
-class Coconut {
-    function __construct($img) {
-       
-    }
-    
-    $this->        
-
-}
 ?>
